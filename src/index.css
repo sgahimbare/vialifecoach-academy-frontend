@@ -1,0 +1,463 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== Global Variables ========== */
+:root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Brand Colors (hex helpers) */
+  --color-primary: #1e3a8a; /* Vialifecoach Navy Blue */
+  --color-primary-dark: #1e293b; /* slate-800 */
+  --color-primary-light: #3b82f6; /* Vialifecoach Blue */
+  --color-primary-bg: #f8fafc; /* slate-50 */
+  --color-primary-soft: #f1f5f9; /* slate-100 */
+  --color-primary-soft-text: #0f172a; /* slate-900 */
+  
+  --color-vialifecoach-blue: #1e3a8a; /* Main Brand Blue */
+  --color-vialifecoach-blue-light: #3b82f6; /* Light Blue */
+  --color-vialifecoach-blue-dark: #1e293b; /* Dark Blue */
+  
+  --color-accent-purple: #9333ea; /* purple-600 */
+  --color-accent-purple-light: #a855f7; /* purple-500 */
+  --color-accent-pink: #db2777; /* pink-600 */
+  --color-accent-green: #22c55e; /* green-500 */
+
+  /* Status Colors */
+  --color-danger: #ef4444; /* red-500 */
+  --color-warning: #eab308; /* yellow-500 */
+  --color-success: #22c55e; /* green-500 */
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-900: #111827;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+  --gradient-accent: linear-gradient(to right, var(--color-primary), var(--color-accent-purple));
+
+  /* ShadCN Base Tokens (HSL triplets for Tailwind) */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 222 47% 25%; /* navy blue */
+  --primary-foreground: 210 40% 98%; /* gray-50 */
+
+  --secondary: 210 20% 98%; /* clean gray */
+  --secondary-foreground: 222.2 84% 4.9%;
+
+  --muted: 210 20% 98%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 215 16% 47%; /* muted slate gray */
+  --accent-foreground: 222.2 84% 4.9%;
+
+  --destructive: 0 84.2% 60.2%; /* red-500 */
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222 47% 25%;
+
+  --radius: 0.75rem;
+}
+
+/* Dark Mode */
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 222 47% 35%; /* darker navy blue */
+  --primary-foreground: 222.2 84% 4.9%;
+
+  --secondary: 215 16% 20%; /* darker slate gray */
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 215 16% 20%;
+  --muted-foreground: 217.9 10.6% 64.9%;
+
+  --accent: 215 16% 35%; /* darker muted slate gray */
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 72.2% 41.4%; /* red-700 */
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 215 16% 20%;
+  --input: 215 16% 20%;
+  --ring: 222 47% 35%;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 0%;   /* Black */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 30 41% 59%; /* Vialifecoach Navy Blue */
+    --primary-foreground: 210 40% 98%; /* White */
+    --secondary: 222.2 84% 4.9%; /* Clean Slate */
+    --secondary-foreground: 210 40% 98%; /* White */
+    --muted: 215.4 16.3% 46.9%; /* Muted Slate */
+    --muted-foreground: 210 40% 98%; /* White */
+    --accent: 215.4 16.3% 46.9%; /* Vialifecoach Accent */
+    --accent-foreground: 210 40% 98%; /* White */
+    --destructive: 0 72.2% 41.4%; /* Vialifecoach Red */
+    --destructive-foreground: 210 40% 98%; /* White */
+    --border: 215.4 16.3% 46.9%;
+    --input: 215.4 16.3% 46.9%;
+    --ring: 30 41% 59%; /* Blue ring highlight */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;   /* Black */
+    --foreground: 0 0% 100%; /* White */
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 100% 50%; /* Red */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 100% 50%; /* Blue */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 0 0% 100%; /* White accents */
+    --accent-foreground: 0 0% 0%; /* Black text on white */
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 100% 50%; /* Red glow on dark mode */
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* Smooth transitions */
+@layer components {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .admin-shell {
+    @apply rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 shadow-2xl;
+  }
+
+  .admin-page {
+    @apply mx-4 mt-6 mb-8 w-auto p-6;
+  }
+
+  .admin-title {
+    @apply text-2xl font-semibold text-white;
+  }
+
+  .admin-subtitle {
+    @apply mt-1 text-sm text-slate-300;
+  }
+
+  .admin-card {
+    @apply rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-slate-100 shadow-lg;
+  }
+
+  .admin-input {
+    @apply border-slate-700 bg-slate-800 text-slate-100 placeholder:text-slate-400;
+  }
+
+  .admin-shell input,
+  .admin-shell select,
+  .admin-shell textarea {
+    @apply border-slate-300 bg-white text-slate-900 placeholder:text-slate-400;
+  }
+
+  .admin-shell select option {
+    @apply text-slate-900;
+  }
+
+  .admin-btn {
+    @apply rounded border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-100 hover:bg-slate-700;
+  }
+
+  .admin-btn-primary {
+    @apply rounded border border-cyan-500/40 bg-cyan-700/80 px-3 py-2 text-sm text-white hover:bg-cyan-600;
+  }
+
+  /* Lecturer Portal Styles - Consistent with Admin */
+  .lecturer-shell {
+    @apply rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 shadow-2xl;
+  }
+
+  .lecturer-page {
+    @apply mx-4 mt-6 mb-8 w-auto p-6;
+  }
+
+  .lecturer-title {
+    @apply text-2xl font-semibold text-white;
+  }
+
+  .lecturer-subtitle {
+    @apply mt-1 text-sm text-slate-300;
+  }
+
+  .lecturer-card {
+    @apply rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-slate-100 shadow-lg;
+  }
+
+  .lecturer-input {
+    @apply border-slate-700 bg-slate-800 text-slate-100 placeholder:text-slate-400;
+  }
+
+  .lecturer-btn {
+    @apply rounded border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-100 hover:bg-slate-700;
+  }
+
+  .lecturer-btn-primary {
+    @apply rounded border border-cyan-500/40 bg-cyan-700/80 px-3 py-2 text-sm text-white hover:bg-cyan-600;
+  }
+
+  .lecturer-nav {
+    @apply mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-4 rounded-xl border border-slate-800 bg-slate-900/50;
+  }
+
+  .lecturer-nav-list {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .lecturer-nav-link {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-slate-100 transition-colors;
+  }
+
+  .lecturer-nav-link.active {
+    @apply border-cyan-500/40 bg-cyan-700/80 text-cyan-100 hover:bg-cyan-600;
+  }
+
+  .lecturer-nav-footer {
+    @apply flex flex-col sm:flex-row items-center gap-4 mt-4 lg:mt-0 pt-4 border-t border-slate-800 lg:pt-0 lg:border-t-0;
+  }
+
+  .lecturer-nav-user {
+    @apply flex items-center space-x-3;
+  }
+
+  .lecturer-nav-logout {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-red-500/40 bg-red-700/80 text-red-100 hover:bg-red-600 transition-colors;
+  }
+}
+
+/* ========== Admin Panel Theme ========== */
+.admin-page {
+  --background: hsl(var(--background));
+  --foreground: hsl(var(--foreground));
+}
+
+.admin-shell {
+  background: rgb(51, 65, 85); /* slate-700 - medium slate */
+  color: rgb(248, 250, 252); /* slate-50 */
+  min-height: 100vh;
+}
+
+.admin-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: rgb(248, 250, 252); /* slate-50 */
+  margin-bottom: 0.5rem;
+}
+
+.admin-subtitle {
+  font-size: 1.125rem;
+  color: rgb(203, 213, 225); /* slate-300 */
+  margin-bottom: 1rem;
+}
+
+/* Admin Cards */
+.admin-card {
+  background: rgb(100, 116, 139); /* slate-500 - lighter, better contrast */
+  border: 1px solid rgb(148, 163, 184); /* slate-400 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+/* Admin Tables */
+.admin-table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background: rgb(100, 116, 139); /* slate-500 */
+  border: 1px solid rgb(148, 163, 184); /* slate-400 */
+}
+
+.admin-table {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.admin-table-header {
+  background: rgb(148, 163, 184); /* slate-400 - lighter header */
+  color: rgb(15, 23, 42); /* slate-900 - dark text for contrast */
+  padding: 0.75rem 1.5rem;
+}
+
+.admin-table-row {
+  border-bottom: 1px solid rgb(148, 163, 184); /* slate-400 */
+}
+
+.admin-table-row:hover {
+  background: rgb(203, 213, 225); /* slate-300 - much lighter hover */
+}
+
+/* Admin Status Badges */
+.status-pending {
+  background: hsl(45, 100%, 96%); /* amber-100 */
+  color: hsl(30, 81%, 31%); /* amber-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.status-reviewed {
+  background: hsl(214, 100%, 97%); /* blue-100 */
+  color: hsl(217, 71%, 27%); /* blue-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.status-approved {
+  background: hsl(142, 76%, 96%); /* green-100 */
+  color: hsl(160, 84%, 20%); /* green-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.status-rejected {
+  background: hsl(0, 93%, 94%); /* red-100 */
+  color: hsl(0, 63%, 31%); /* red-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+/* AI Review Specific */
+.ai-score-high {
+  color: hsl(160, 84%, 20%); /* green-800 */
+  font-weight: 700;
+}
+
+.ai-score-medium {
+  color: hsl(217, 71%, 27%); /* blue-800 */
+  font-weight: 600;
+}
+
+.ai-score-low {
+  color: hsl(0, 63%, 31%); /* red-800 */
+  font-weight: 600;
+}
+
+.ai-recommendation-high {
+  background: hsl(142, 76%, 96%); /* green-100 */
+  color: hsl(160, 84%, 20%); /* green-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.ai-recommendation-medium {
+  background: hsl(214, 100%, 97%); /* blue-100 */
+  color: hsl(217, 71%, 27%); /* blue-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}
+
+.ai-recommendation-low {
+  background: hsl(0, 93%, 94%); /* red-100 */
+  color: hsl(0, 63%, 31%); /* red-800 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+}

@@ -1,0 +1,17 @@
+/* Video aspect ratio styling */
+.aspect-video {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+  background: #1f2937;
+}
+
+/* Video placeholder animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

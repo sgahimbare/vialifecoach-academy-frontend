@@ -1,0 +1,18 @@
+5:interface Application {
+19:export default function ApplicationPortal() {
+24:  const [applications, setApplications] = useState<Application[]>([]);
+55:  const mockApplications: Application[] = [
+130:    const filtered = mockApplications.filter(app => {
+140:    setApplications(filtered);
+143:  const handleApplicationClick = (applicationId: string) => {
+144:    // Direct to GF Application Portal with account creation context
+149:        applicationTitle: mockApplications.find(app => app.id === applicationId)?.title
+165:      case 'active': return 'Accepting Applications';
+166:      case 'closed': return 'Applications Closed';
+196:              <h1 className="text-2xl font-bold text-gray-900">Vialifecoach Application Portal</h1>
+255:          {/* Applications Grid */}
+324:                        onClick={() => handleApplicationClick(app.id)}
+339:        {/* GF Application Portal Link */}
+348:                  <h3 className="text-xl font-bold text-gray-900 mb-4">Application Status</h3>
+350:                    Have you already applied? Check your application status, view decisions, and manage your profile in the Vialifecoach GF Application Portal.
+358:                    Check Application Status
