@@ -171,22 +171,25 @@ export function LecturerCommunityChat({ studentMode = false }: { studentMode?: b
 
   async function send() {
     if (!accessToken || !selected || !messageText.trim()) return;
-    const temp = {
+    const temp: CommunityMessage = {
       id: -Date.now(),
       sender_id: user?.id || 0,
-      receiver_id: selected.id,
+      recipient_id: selected.id,
       content: messageText.trim(),
       created_at: new Date().toISOString(),
       is_read: false,
-      sender_name: user?.name || "You",
     };
     setMessages((prev) => [...prev, temp]);
     setMessageText("");
     try {
-      const response = studentMode
+      const response = (studentMode
         ? await communityService.sendStudentMessage(accessToken, selected.id, messageText.trim())
-        : await communityService.sendMessage(accessToken, selected.id, messageText.trim());
-      setMessages((prev) => prev.map((msg) => (msg.id === temp.id ? response.data : msg)));
+        : await communityService.sendMessage(accessToken, selected.id, messageText.trim())) as {
+        data?: Partial<CommunityMessage>;
+      };
+      setMessages((prev) =>
+        prev.map((msg) => (msg.id === temp.id ? ({ ...msg, ...response.data } as CommunityMessage) : msg))
+      );
       setError("");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to send message");

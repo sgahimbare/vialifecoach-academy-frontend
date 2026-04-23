@@ -1863,7 +1863,7 @@ export default function AdminCoursesPage() {
       ) : null}
     </AdminLayout>
   );
-}
+
   function buildTemplateContent() {
     const reading = [
       "Lesson Overview",
@@ -1940,3 +1940,4 @@ export default function AdminCoursesPage() {
       )
     );
   }
+}

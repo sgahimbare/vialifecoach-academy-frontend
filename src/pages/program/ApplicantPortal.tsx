@@ -11,6 +11,8 @@ interface Application {
   email: string;
   referenceNumber: string;
   programName?: string;
+  admissionNumber?: string;
+  admissionDate?: string;
   applicationData?: any;
 }
 
@@ -248,7 +250,7 @@ export default function ApplicantPortal() {
                         View Details
                       </button>
                       
-                      {application.status === 'accepted' && (
+                      {application.status === 'admitted' && (
                         <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">
                           Accept Offer
                         </button>

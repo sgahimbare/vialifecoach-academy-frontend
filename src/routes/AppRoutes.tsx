@@ -260,7 +260,7 @@ export default function AppRoutes() {
           }
         />
 
-        // Dedicated admin-only routes with highest priority
+        {/* Dedicated admin-only routes with highest priority */}
         <Route
           path="/admin"
           element={<ProtectedRoute allowedRoles={["admin", "owner", "manager", "content_editor", "support", "lecturer", "instructor"]} />}

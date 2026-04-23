@@ -334,7 +334,6 @@ export default function AdminProgramKeywordsPage() {
                       type="button"
                       onClick={() => {
                         setFilterProgram(program.name);
-                        setFormData((prev) => ({ ...prev, program_name: program.name }));
                         setProgramHint(`Managing keywords for ${program.name}.`);
                       }}
                       className={`flex items-center justify-between rounded-lg border px-3 py-3 text-left text-sm transition ${

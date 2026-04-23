@@ -16,6 +16,8 @@ interface Applicant {
   applicationDate: string;
   status: 'Accepted' | 'Pending' | 'Rejected';
   avatar?: string;
+  admissionNumber?: string;
+  admissionDate?: string;
 }
 
 // Backend response types - matches Application from AdminApplicationsPage
@@ -151,7 +153,9 @@ export default function AdminAdmissionLetterPage() {
           program: app.program.name,
           applicationDate: new Date(app.submittedAt).toLocaleDateString(),
           status: app.status === 'admitted' ? 'Accepted' : 'Pending' as const,
-          avatar: undefined
+          avatar: undefined,
+          admissionNumber: app.admissionNumber,
+          admissionDate: app.admissionDate
         }));
         setApplicants(transformedApplicants);
       } else {
