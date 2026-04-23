@@ -1,4 +1,4 @@
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "vialifecoach-academy-frontend"
-pages_build_output_dir = "./dist"
+pages_build_output_dir = "./build"
 compatibility_date = "2026-04-23"

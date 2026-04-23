@@ -259,7 +259,7 @@ The application uses PostgreSQL with the following main tables:
 
 ### **Frontend (Cloudflare Pages)**
 1. Build the application: `npm run build`
-2. Set the build output directory to `dist`
+2. Set the build output directory to `build`
 3. Set the root directory to `vialifecoach-frontend` if your Git repo includes the parent folder
 4. Add Cloudflare Pages environment variables, especially `VITE_API_BASE_URL`
 5. Keep `public/_redirects` in place so React Router routes resolve on refresh

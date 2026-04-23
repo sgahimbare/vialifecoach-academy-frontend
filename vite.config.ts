@@ -12,6 +12,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    build: {
+      outDir: "build",
+    },
     resolve: {
       alias: {
         "@": resolve(__dirname, "./src"),
