@@ -18,26 +18,26 @@
 <body>
     <div class="container">
         <h1>Course API Diagnostic Test</h1>
-        
+
         <div class="test-section">
             <h3>1. Test Authentication</h3>
             <button onclick="testAuth()">Test Authentication</button>
             <div id="auth-result" class="result"></div>
         </div>
-        
+
         <div class="test-section">
             <h3>2. Test Course Loading</h3>
             <input type="number" id="courseId" placeholder="Enter Course ID" style="width: 200px; padding: 5px;">
             <button onclick="testCourseLoad()">Load Course</button>
             <div id="course-result" class="result"></div>
         </div>
-        
+
         <div class="test-section">
             <h3>3. Test Categories API</h3>
             <button onclick="testCategories()">Load Categories</button>
             <div id="categories-result" class="result"></div>
         </div>
-        
+
         <div class="test-section">
             <h3>4. Console Logs</h3>
             <button onclick="clearLogs()">Clear Logs</button>
@@ -47,7 +47,7 @@
 
     <script>
         let authToken = localStorage.getItem('accessToken');
-        
+
         function log(message, type = 'info') {
             const logs = document.getElementById('logs');
             if (logs) {
@@ -56,21 +56,21 @@
                 logs.scrollTop = logs.scrollHeight;
             }
         }
-        
+
         async function testAuth() {
             const result = document.getElementById('auth-result');
             if (!authToken) {
                 result.innerHTML = '<span class="error">No auth token found</span>';
                 return;
             }
-            
+
             try {
                 const response = await fetch('http://localhost:5000/api/v1/admin/test-auth', {
                     headers: {
                         'Authorization': `Bearer ${authToken}`
                     }
                 });
-                
+
                 if (response.ok) {
                     result.innerHTML = '<span class="success">Auth working</span>';
                 } else {
@@ -80,16 +80,16 @@
                 result.innerHTML = `<span class="error">Auth error: ${error.message}</span>`;
             }
         }
-        
+
         async function testCourseLoad() {
             const courseId = document.getElementById('courseId').value;
             const result = document.getElementById('course-result');
-            
+
             if (!authToken || !courseId) {
                 result.innerHTML = '<span class="error">Missing auth token or course ID</span>';
                 return;
             }
-            
+
             try {
                 log(`Testing course load for ID: ${courseId}`);
                 const response = await fetch(`http://localhost:5000/api/v1/admin/courses/${courseId}`, {
@@ -97,10 +97,10 @@
                         'Authorization': `Bearer ${authToken}`
                     }
                 });
-                
+
                 const data = await response.json();
                 log(`Course API response: ${JSON.stringify(data, null, 2)}`);
-                
+
                 if (response.ok && data.success) {
                     result.innerHTML = `<span class="success">Course loaded successfully</span>`;
                 } else {
@@ -111,15 +111,15 @@
                 log(`Course load error: ${error.message}`);
             }
         }
-        
+
         async function testCategories() {
             const result = document.getElementById('categories-result');
-            
+
             if (!authToken) {
                 result.innerHTML = '<span class="error">No auth token</span>';
                 return;
             }
-            
+
             try {
                 log('Testing categories API...');
                 const response = await fetch('http://localhost:5000/api/v1/admin/categories', {
@@ -127,10 +127,10 @@
                         'Authorization': `Bearer ${authToken}`
                     }
                 });
-                
+
                 const data = await response.json();
                 log(`Categories API response: ${JSON.stringify(data, null, 2)}`);
-                
+
                 if (response.ok) {
                     result.innerHTML = `<span class="success">Categories loaded: ${data.data?.length || 0} items</span>`;
                 } else {
@@ -141,11 +141,11 @@
                 log(`Categories error: ${error.message}`);
             }
         }
-        
+
         function clearLogs() {
             document.getElementById('logs').innerHTML = '';
         }
-        
+
         // Auto-test on load
         if (authToken) {
             log('Page loaded with auth token');
